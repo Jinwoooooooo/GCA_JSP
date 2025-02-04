@@ -9,4 +9,17 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+  	<description>환경정보 PARAM1</description>
+  	<param-name>PARAM1</param-name>
+  	<param-value>1</param-value>
+  </context-param>
+  
+  <context-param>
+  	<description>환경정보 PARAM2</description>
+  	<param-name>PARAM2</param-name>
+  	<param-value>2</param-value>
+  </context-param>
+  
 </web-app>

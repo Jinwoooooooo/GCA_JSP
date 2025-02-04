@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4.application</title>
+
+<!-- 
+	날짜 : 2025/02/04
+	이름 : 정진우
+	내용 : JSP 내장객체 application 실습하기
+-->
+
+</head>
+<body>
+	<h3>4.application 실습하기</h3>
+	
+	<h4>서버정보</h4>
+	<p>
+		서버 : <%= application.getServerInfo() %><br>
+		Servlet 버전 : <%= application.getMajorVersion() %>.<%= application.getMinorVersion() %><br>
+		JSP 버전 : <%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %<br>
+	</p>	
+		
+	<h4>환경정보</h4>
+	
+	
+	<h4>자원정보</h4>
+
+
+</body>
+</html>
