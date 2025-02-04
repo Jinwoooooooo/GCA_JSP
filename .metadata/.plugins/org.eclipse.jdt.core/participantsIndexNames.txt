@@ -1,0 +1,7 @@
+INDEX VERSION 1.134
+C:\Users\lotte06\Desktop\workspace\GCA_JSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1599087943.index
+\ch03\src\main\java
+C:\Users\lotte06\Desktop\workspace\GCA_JSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\674870415.index
+\ch03\src\main\java
+C:\Users\lotte06\Desktop\workspace\GCA_JSP\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\502610561.index
+\ch03\src\main\java

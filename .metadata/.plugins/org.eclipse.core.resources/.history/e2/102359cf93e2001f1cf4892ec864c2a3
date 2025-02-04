@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	String uid = request.getParameter("uid");
+	String password = request.getParameter("pass");
+	String name = request.getParameter("name");
+	String birth = request.getParameter("birth");
+	String gender = request.getParameter("gender");
+	String hobby = request.getParameter("hobby");
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>result2</title>
+</head>
+<body>
+	<h3>request 데이터 수신</h3>
+	<p>
+		아이디 : <%= uid %><br>
+		이름 : <%= name %><br>
+		나이 : <%= age %><br>
+	</p>
+	
+	<a href="../1.request.jsp">뒤로가기</a>
+</body>
+</html>

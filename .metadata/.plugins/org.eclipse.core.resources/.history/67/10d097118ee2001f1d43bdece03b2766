@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	//전송 데이터 수신처리
+	request.getParameter("");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1.request</title>
+</head>
+<body>
+	<h3>1.request 내장객체</h3>
+	
+	<form action="./proc/result1.jsp">
+		<input type="text" name="uid"><br>
+		<input type="text" name="name"><br>
+		<input type="number" name="age"><br>
+		<input type="submit" value="전송하기"><br>
+		
+	</form>
+</body>
+</html>
