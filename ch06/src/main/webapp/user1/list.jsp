@@ -1,5 +1,41 @@
+<%@page import="entity.User1"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>   
+ <%
+ 	//데이터베이스 처리
+ 	String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+	String user = "root";
+	String pass = "1234";
+	
+	List<User1> users = new ArrayList<>();
+	
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(host, user, pass);
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery("SELECT * FROM user1");
+		
+		while(rs.next()) {
+			User1 user1 = new User1();
+			user1.setUid(rs.getString(1));
+			user1.setName(rs.getString(2));
+			user1.setHp(rs.getString(3));
+			user1.setAge(rs.getInt(4));
+			
+			users.add(user1);
+		}
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +55,18 @@
 			<th>나이</th>
 			<th>관리</th>
 		</tr>
+		<% for(User1 user1 : users) { %>
 		<tr>
-			<td>A101</td>
-			<td>홍길동</td>
-			<td>010-1234-5678</td>
-			<td>21</td>
+			<td><%= user1.getUid() %></td>
+			<td><%= user1.getName() %></td>
+			<td><%= user1.getHp() %></td>
+			<td><%= user1.getAge() %></td>
 			<td>
-				<a href="./modify.jsp">수정</a>
-				<a href="./delete.jsp">삭제</a>
+				<a href="./modify.jsp?uid=<%= user1.getUid() %>">수정</a>
+				<a href="./proc/delete.jsp?uid=<%= user1.getUid() %>">삭제</a>
 			</td>
 		</tr>
+		<% } %>
 	</table>
 </body>
 </html>
