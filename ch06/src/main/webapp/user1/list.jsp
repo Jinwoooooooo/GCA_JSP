@@ -45,7 +45,7 @@
 <body>
 	<h3>user1 목록</h3>
 	<a href="../1.jdbc.jsp">처음으로</a>
-	<a href="../register.jsp">등록하기</a>
+	<a href="./register.jsp">등록하기</a>
 	
 	<table border="1">
 		<tr>
