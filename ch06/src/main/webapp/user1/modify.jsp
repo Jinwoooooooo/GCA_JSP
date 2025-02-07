@@ -1,3 +1,6 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.Context"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@page import="entity.User1"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -10,15 +13,13 @@
 	User1 user1 = null;	//선언
 	String uid = request.getParameter("uid");
 	
-	//데이터베이스 처리
-	String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-	String user = "root";
-	String pass = "1234";
-	
 	try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		Context initCtx = new InitialContext();
+		Context ctx = (Context) initCtx.lookup("java:comp/env");
 		
+		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
+		Connection conn = ds.getConnection();
+				
 		String sql = "SELECT * FROM user1 WHERE uid=?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, uid);
