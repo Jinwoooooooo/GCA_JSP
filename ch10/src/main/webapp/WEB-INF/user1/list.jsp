@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>   
+    pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="f" uri="jakarta.tags.functions" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +21,18 @@
 			<th>나이</th>
 			<th>관리</th>
 		</tr>
+		<c:forEach var="dto" items="${dtos}">
 		<tr>
-			<td>A101</td>
-			<td>JIN</td>
-			<td>010-4441-2555</td>
-			<td>25</td>
+			<td>${dto.uid}</td>
+			<td>${dto.name}</td>
+			<td>${dto.hp}</td>
+			<td>${dto.age}</td>
 			<td>
-				<a href="/ch10/user1/modify.do">수정</a>
-				<a href="#">삭제</a>
+				<a href="/ch10/user1/modify.do?uid=${dto.uid}">수정</a>
+				<a href="/ch10/user1/remove.do?uid=${dto.uid}">삭제</a>
 			</td>
 		</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

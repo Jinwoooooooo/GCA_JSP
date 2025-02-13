@@ -27,7 +27,7 @@ public class User1Service {
 		return dao.selectUser1(uid);
 	}
 	
-	public List<User1DTO> findAll() {
+	public List<User1DTO> findAllUser1() {
 		return dao.selectUser1All();
 	}
 	
