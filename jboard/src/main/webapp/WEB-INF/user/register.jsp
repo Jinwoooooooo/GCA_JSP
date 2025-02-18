@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/jboard/js/daumPostcode.js"></script>
 <main id="user">
     <section class="register">
 
@@ -59,10 +61,10 @@
                 <tr>
                     <td>주소</td>
                     <td>
-                        <input type="text" name="zip" placeholder="우편번호"/>
-                        <button type="button"><img src="../images/chk_post.gif" alt="우편번호찾기"/></button>
-                        <input type="text" name="addr1" placeholder="주소 검색"/>
-                        <input type="text" name="addr2" placeholder="상세주소 입력"/>
+                        <input type="text" name="zip" id="postcode" placeholder="우편번호" readonly/>
+                        <button type="button" onclick="DaumPostcode()"><img src="../images/chk_post.gif" alt="우편번호찾기"/></button>
+                        <input type="text" name="addr1" id="address" placeholder="주소 검색" readonly/>
+                        <input type="text" name="addr2" id="detailAddress" placeholder="상세주소 입력"/>
                     </td>
                 </tr>
             </table>

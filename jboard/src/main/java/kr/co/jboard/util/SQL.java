@@ -5,7 +5,7 @@ public class SQL {
 	// terms
 	public static final String SELECT_TERMS = "SELECT * FROM `terms` WHERE `no`=?";
 	public static final String INSERT_USER = "INSERT INTO user SET " + "uid = ?,"
-																	 + "pass = ?,"
+																	 + "pass = SHA2(?, 256),"
 																	 + "name = ?,"
 																	 + "nick = ?,"
 																	 + "email = ?,"
