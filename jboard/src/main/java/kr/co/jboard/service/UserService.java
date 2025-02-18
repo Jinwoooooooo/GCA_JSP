@@ -9,7 +9,7 @@ public enum UserService {
 	INSTANCE;	
 	private UserDAO dao = UserDAO.getInstance();
 	
-	public void registeUser(UserDTO dto) {
+	public void registerUser(UserDTO dto) {
 		dao.insertUser(dto);
 	}
 	

@@ -15,7 +15,7 @@ public class DBHelper {
 
 	protected Connection conn = null;
 	protected Statement stmt = null;
-	protected PreparedStatement psmt = null;
+	protected PreparedStatement pstmt = null;
 	protected ResultSet rs = null;
 	
 	protected Connection getConnection() throws NamingException, SQLException {
@@ -37,8 +37,8 @@ public class DBHelper {
 			stmt.close();
 		}
 		
-		if(psmt != null) {
-			psmt.close();
+		if(pstmt != null) {
+			pstmt.close();
 		}
 		
 		if(conn != null) {

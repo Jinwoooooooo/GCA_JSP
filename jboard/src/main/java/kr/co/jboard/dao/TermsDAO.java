@@ -23,9 +23,9 @@ public class TermsDAO extends DBHelper {
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_TERMS);
-			psmt.setInt(1, no);
-			rs = psmt.executeQuery();
+			pstmt = conn.prepareStatement(SQL.SELECT_TERMS);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				dto = new TermsDTO();
 				dto.setNo(rs.getInt(1));
