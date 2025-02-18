@@ -1,5 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	const result = ${result};
+	
+	if(result == 100) {
+		alert("아이디나 비밀번호가 다릅니다.\n다시 로그인 하세요.");
+	} else if(result == 101){
+		alert("로그아웃 되었습니다.");
+	}
+</script>
 <main id="user">
     <section class="login">
         <form action="/jboard/user/login.do" method="post">                    

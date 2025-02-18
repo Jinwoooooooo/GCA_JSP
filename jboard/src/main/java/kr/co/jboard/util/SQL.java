@@ -4,6 +4,8 @@ public class SQL {
 
 	// terms
 	public static final String SELECT_TERMS = "SELECT * FROM `terms` WHERE `no`=?";
+	
+	
 	public static final String INSERT_USER = "INSERT INTO user SET " + "uid = ?,"
 																	 + "pass = SHA2(?, 256),"
 																	 + "name = ?,"
@@ -15,6 +17,7 @@ public class SQL {
 																	 + "addr2 = ?,"
 																	 + "regip = ?,"
 																	 + "regDate = NOW()";
+	public static final String SELECT_USER = "SELECT * FROM user WHERE uid = ? and pass = SHA2(?, 256)";
 			
 																	
 	

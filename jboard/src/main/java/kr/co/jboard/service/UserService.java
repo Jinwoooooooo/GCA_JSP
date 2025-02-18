@@ -17,6 +17,10 @@ public enum UserService {
 		return dao.selectUser(uid);
 	}
 	
+	public UserDTO findUser(UserDTO dto) {
+		return dao.selectUser(dto);
+	}
+	
 	public List<UserDTO> findAllUser() {
 		return dao.selectAllUser();
 	}

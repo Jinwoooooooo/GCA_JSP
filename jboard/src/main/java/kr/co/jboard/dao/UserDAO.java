@@ -41,6 +41,41 @@ public class UserDAO extends DBHelper {
 		return null;
 	}
 	
+	public UserDTO selectUser(UserDTO dto) {
+		
+		UserDTO userDTO = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(SQL.SELECT_USER);
+			pstmt.setString(1, dto.getUid());
+			pstmt.setString(2, dto.getPass());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userDTO = new UserDTO();
+				userDTO.setUid(rs.getString(1));
+				userDTO.setPass(rs.getString(2));
+				userDTO.setName(rs.getString(3));
+				userDTO.setNick(rs.getString(4));
+				userDTO.setEmail(rs.getString(5));
+				userDTO.setHp(rs.getString(6));
+				userDTO.setRole(rs.getString(7));
+				userDTO.setZip(rs.getString(8));
+				userDTO.setAddr1(rs.getString(9));
+				userDTO.setAddr2(rs.getString(10));
+				userDTO.setRegip(rs.getString(11));
+				userDTO.setRegDate(rs.getString(12));
+				userDTO.setLeaveDate(rs.getString(13));
+			}
+			closeAll();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userDTO;
+	}
+	
 	public List<UserDTO> selectAllUser() {
 		return null;
 	}
