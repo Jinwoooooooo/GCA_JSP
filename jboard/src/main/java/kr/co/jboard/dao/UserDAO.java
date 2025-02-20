@@ -2,6 +2,9 @@ package kr.co.jboard.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.jboard.dto.UserDTO;
 import kr.co.jboard.util.DBHelper;
 import kr.co.jboard.util.SQL;
@@ -12,6 +15,8 @@ public class UserDAO extends DBHelper {
 		return INSTANCE;
 	}
 	private UserDAO() {}
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public void insertUser(UserDTO dto) {
 		
@@ -35,6 +40,42 @@ public class UserDAO extends DBHelper {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public int selectCountUser(String type, String value) {
+		
+		int count = 0;
+		
+		//String 불변성을 고려해 StringBuilder로 동적 SQL 생성
+		StringBuilder sql = new StringBuilder(SQL.SELECT_COUNT_USER);
+		
+		if(type.equals("uid")) {
+			sql.append(SQL.WHERE_UID);
+		} else if(type.equals("nick")) {
+			sql.append(SQL.WHERE_NICK);
+		} else if(type.equals("email")) {
+			sql.append(SQL.WHERE_EMAIL);
+		} else if(type.equals("hp")) {
+			sql.append(SQL.WHERE_HP);
+		}
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, value);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			closeAll();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return count;
 	}
 	
 	public UserDTO selectUser(String uid) {

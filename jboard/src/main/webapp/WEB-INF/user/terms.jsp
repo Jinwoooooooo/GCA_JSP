@@ -13,7 +13,7 @@
 			if(check1.checked && check2.checked) {
 				return true;
 			} else {
-				alert("약관에 동의를 해야 합니다.");
+				alert("모든 약관에 동의해주세요.");
 				return false;
 			}
 			
