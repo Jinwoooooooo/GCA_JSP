@@ -2,8 +2,12 @@ package kr.co.jboard.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.jboard.dto.ArticleDTO;
 import kr.co.jboard.util.DBHelper;
+import kr.co.jboard.util.SQL;
 
 public class ArticleDAO extends DBHelper {	
 	private static final ArticleDAO INSTANCE = new ArticleDAO();
@@ -11,9 +15,22 @@ public class ArticleDAO extends DBHelper {
 		return INSTANCE;
 	}
 	private ArticleDAO() {}
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public void insertArticle(ArticleDTO dto) {
 		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getWriter());
+			pstmt.setString(4, dto.getRegip());
+			pstmt.executeUpdate();
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	public ArticleDTO selectArticle(int no) {

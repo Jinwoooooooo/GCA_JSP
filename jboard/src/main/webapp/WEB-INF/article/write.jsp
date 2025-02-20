@@ -13,7 +13,7 @@
                 <a href="/index.html" class="title">Board Project</a>
             </h3>
             <p>
-                <a href="../user/info.html" class="info">홍길동</a>님 반갑습니다.
+                <a href="../user/info.html" class="info">${sessionScope.sessUser.nick}</a>님 반갑습니다.
                 <a href="#">[로그아웃]</a>
             </p>
         </header>
@@ -22,7 +22,8 @@
                 <nav>
                     <h1>글쓰기</h1>
                 </nav>
-                <form action="#">
+                <form action="/jboard/article/write.do" method="post" enctype="multipart/form-data">
+                    	<input type="hidden" name="writer" value="${sessionScope.sessUser.uid}">
                     <table border="0">                        
                         <tr>
                             <th>제목</th>
@@ -37,13 +38,17 @@
                         <tr>
                             <th>파일</th>
                             <td>
-                                <input type="file" name="file" />
+                            	<p style="margin-bottom: 5px;">
+                            		최대 2개 파일 첨부 가능, 각 파일당 최대 10MB까지 가능
+                            	</p>
+                                <input type="file" name="file1" />
+                                <input type="file" name="file2" />
                             </td>
                         </tr>
                     </table>
                     
                     <div>
-                        <a href="./list.html" class="btn btnCancel">취소</a>
+                        <a href="/jboard/article/list.do" class="btn btnCancel">취소</a>
                         <input type="submit" value="작성완료" class="btn btnComplete"/>
                     </div>
                 </form>

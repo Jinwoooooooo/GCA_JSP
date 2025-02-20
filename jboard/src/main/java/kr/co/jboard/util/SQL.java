@@ -23,6 +23,13 @@ public class SQL {
 																	 + "addr2 = ?,"
 																	 + "regip = ?,"
 																	 + "regDate = NOW()";
+	
+	//article
+	public static final String INSERT_ARTICLE = "INSERT INTO article SET " + "title = ?,"
+																		   + "content = ?,"
+																		   + "writer = ?,"
+																		   + "regip = ?,"
+																		   + "wdate = NOW()";
 			
 																	
 	
@@ -31,3 +38,4 @@ public class SQL {
 	
 	
 }
+
