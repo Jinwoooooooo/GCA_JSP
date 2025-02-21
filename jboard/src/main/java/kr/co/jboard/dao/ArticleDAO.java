@@ -17,7 +17,9 @@ public class ArticleDAO extends DBHelper {
 	private ArticleDAO() {}
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	public void insertArticle(ArticleDTO dto) {
+	public int insertArticle(ArticleDTO dto) {
+		
+		int no = 0;
 		
 		try {
 			conn = getConnection();
@@ -28,10 +30,19 @@ public class ArticleDAO extends DBHelper {
 			pstmt.setString(4, dto.getWriter());
 			pstmt.setString(5, dto.getRegip());
 			pstmt.executeUpdate();
+			
+			//글 번호 조회 쿼리 실행
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_MAX_NO);
+			if(rs.next()) {
+				no = rs.getInt(1);
+			}
+			
 			closeAll();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
+		return no;
 	}
 	
 	public ArticleDTO selectArticle(int no) {

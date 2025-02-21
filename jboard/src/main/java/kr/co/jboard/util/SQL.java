@@ -25,12 +25,19 @@ public class SQL {
 																	 + "regDate = NOW()";
 	
 	//article
+	public static final String SELECT_MAX_NO = "SELECT MAX(no) FROM article";
 	public static final String INSERT_ARTICLE = "INSERT INTO article SET " + "title = ?,"
 																		   + "content = ?,"
 																		   + "file = ?,"
 																		   + "writer = ?,"
 																		   + "regip = ?,"
 																		   + "wdate = NOW()";
+	
+	//file
+	public static final String INSERT_FILE = "INSERT INTO file SET " + "ano = ?,"
+																	 + "oName = ?,"
+																	 + "sName = ?,"
+																	 + "rdate = NOW()";
 			
 																	
 	

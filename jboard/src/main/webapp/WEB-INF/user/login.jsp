@@ -7,6 +7,8 @@
 		alert("아이디나 비밀번호가 다릅니다.\n다시 로그인 하세요.");
 	} else if(result == 101){
 		alert("로그아웃 되었습니다.");
+	} else if(result == 102){
+		alert("먼저 로그인 하세요.");
 	}
 </script>
 <main id="user">

@@ -55,8 +55,14 @@ public class WriteController extends HttpServlet {
 		
 		logger.debug(dto.toString());
 		
-		//서비스 호출
-		service.registerArticle(dto);
+		//글 등록 서비스 호출
+		int no = service.registerArticle(dto);
+		
+		//파일 등록 서비스 호출
+		for(FileDTO fileDTO : files) {
+			fileDTO.setAno(no);
+			fileService.registerFile(fileDTO);
+		}
 		
 		//이동
 		resp.sendRedirect("/jboard/article/list.do");

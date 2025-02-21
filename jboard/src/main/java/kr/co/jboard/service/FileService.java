@@ -17,7 +17,7 @@ public enum FileService {
 	INSTANCE;	
 	private FileDAO dao = FileDAO.getInstance();
 	
-	public void registeFile(FileDTO dto) {
+	public void registerFile(FileDTO dto) {
 		dao.insertFile(dto);
 	}
 	
