@@ -12,6 +12,8 @@ public class ArticleDTO {
 	private String writer;
 	private String regip;
 	private String wdate;
+	private String nick;
+
 	public int getNo() {
 		return no;
 	}
@@ -68,10 +70,16 @@ public class ArticleDTO {
 		this.regip = regip;
 	}
 	public String getWdate() {
-		return wdate;
+		return wdate.substring(0, 10);
 	}
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	
 	@Override
