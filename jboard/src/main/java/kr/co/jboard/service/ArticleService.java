@@ -27,8 +27,12 @@ public enum ArticleService {
 		return dao.selectAllArticle(start);
 	}
 	
-	public List<ArticleDTO> searchAllArticle(ArticleDTO dto) {
-		return dao.selectAllArticleBySearch(dto);
+	public int getCountArticleBySearch(ArticleDTO dto) {
+		return dao.selectCountArticleBySearch(dto);
+	}
+	
+	public List<ArticleDTO> searchAllArticle(ArticleDTO dto, int start) {
+		return dao.selectAllArticleBySearch(dto, start);
 	}
 	
 	public void modifyArticle(ArticleDTO dto) {
@@ -86,7 +90,7 @@ public enum ArticleService {
 	//페이지 시작번호 구하기
 	public int getPageStartNum(int total, int currentPage) {
 		int start = (currentPage - 1) * 10;
-		return start;
+		return total - start;
 	}
 	
 }

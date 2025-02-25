@@ -86,7 +86,6 @@ public class ArticleDTO {
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-	
 	public String getSearchType() {
 		return searchType;
 	}

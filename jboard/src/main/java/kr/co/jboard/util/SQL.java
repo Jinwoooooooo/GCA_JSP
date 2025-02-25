@@ -26,9 +26,14 @@ public class SQL {
 	
 	//article
 	public static final String SELECT_ALL_ARTICLE_BY_SEARCH = "SELECT a.*, u.nick FROM article AS a JOIN user AS u ON a.writer = u.uid ";
-	public static final String WHERE_FOR_SEARCH_TITLE = "WHERE title LIKE ?";
-	public static final String WHERE_FOR_SEARCH_CONTENT = "WHERE content LIKE ?";
-	public static final String WHERE_FOR_SEARCH_WRITER = "WHERE writer LIKE ?";
+	public static final String SELECT_COUNT_ARTICLE_BY_SEARCH = "SELECT COUNT(*) FROM article AS a ";
+	public static final String JOIN_FOR_SEARCH_NICK  = "JOIN `user` as u ON a.writer = u.uid ";
+	public static final String WHERE_FOR_SEARCH_TITLE = "WHERE title LIKE ? ";
+	public static final String WHERE_FOR_SEARCH_CONTENT = "WHERE content LIKE ? ";
+	public static final String WHERE_FOR_SEARCH_WRITER = "WHERE nick LIKE ? ";
+	public static final String ORDER_FOR_SEARCH = "ORDER BY no DESC ";
+	public static final String LIMIT_FOR_SEARCH = "LIMIT ?, 10";
+	
 	
 	public static final String SELECT_MAX_NO = "SELECT MAX(no) FROM article";
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM article";

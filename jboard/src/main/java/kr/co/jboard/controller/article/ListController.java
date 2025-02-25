@@ -48,7 +48,6 @@ public class ListController extends HttpServlet {
 		
 		//데이터 참조 공유
 		req.setAttribute("articles", articles);
-		req.setAttribute("total", total);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageStartNum", pageStartNum);
