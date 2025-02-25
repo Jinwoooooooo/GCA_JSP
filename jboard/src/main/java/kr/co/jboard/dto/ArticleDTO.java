@@ -12,7 +12,12 @@ public class ArticleDTO {
 	private String writer;
 	private String regip;
 	private String wdate;
+	
+	//추가 필드
 	private String nick;
+	
+	private String searchType;
+	private String keyword;
 
 	public int getNo() {
 		return no;
@@ -80,6 +85,19 @@ public class ArticleDTO {
 	}
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 	@Override

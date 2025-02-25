@@ -25,6 +25,11 @@ public class SQL {
 																	 + "regDate = NOW()";
 	
 	//article
+	public static final String SELECT_ALL_ARTICLE_BY_SEARCH = "SELECT a.*, u.nick FROM article AS a JOIN user AS u ON a.writer = u.uid ";
+	public static final String WHERE_FOR_SEARCH_TITLE = "WHERE title LIKE ?";
+	public static final String WHERE_FOR_SEARCH_CONTENT = "WHERE content LIKE ?";
+	public static final String WHERE_FOR_SEARCH_WRITER = "WHERE writer LIKE ?";
+	
 	public static final String SELECT_MAX_NO = "SELECT MAX(no) FROM article";
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM article";
 	public static final String SELECT_ALL_ARTICLE = "SELECT a.*, u.nick FROM article AS a JOIN user AS u ON a.writer = u.uid ORDER BY a.no desc LIMIT ?, 10";

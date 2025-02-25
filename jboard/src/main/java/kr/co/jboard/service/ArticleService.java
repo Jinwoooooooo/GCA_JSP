@@ -27,6 +27,10 @@ public enum ArticleService {
 		return dao.selectAllArticle(start);
 	}
 	
+	public List<ArticleDTO> searchAllArticle(ArticleDTO dto) {
+		return dao.selectAllArticleBySearch(dto);
+	}
+	
 	public void modifyArticle(ArticleDTO dto) {
 		dao.updateArticle(dto);
 	}
