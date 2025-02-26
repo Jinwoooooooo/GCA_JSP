@@ -1,5 +1,7 @@
 package kr.co.jboard.dto;
 
+import java.util.List;
+
 public class ArticleDTO {
 	
 	private int no;
@@ -13,12 +15,42 @@ public class ArticleDTO {
 	private String regip;
 	private String wdate;
 	
-	//추가 필드
+	// 추가필드
 	private String nick;
 	
 	private String searchType;
 	private String keyword;
-
+	private List<FileDTO> files;
+	
+	public List<FileDTO> getFiles() {
+		return files;
+	}
+	public void setFiles(List<FileDTO> files) {
+		this.files = files;
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -80,34 +112,10 @@ public class ArticleDTO {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-	public String getSearchType() {
-		return searchType;
-	}
-	public void setSearchType(String searchType) {
-		this.searchType = searchType;
-	}
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
 	
 	@Override
 	public String toString() {
 		return "ArticleDTO [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", file="
 				+ file + ", hit=" + hit + ", writer=" + writer + ", regip=" + regip + ", wdate=" + wdate + "]";
 	}
-	
-	
-	
-	
-	
 }
-

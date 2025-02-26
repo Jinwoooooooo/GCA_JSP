@@ -1,6 +1,5 @@
 package kr.co.jboard.dao;
 
-import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ public class FileDAO extends DBHelper {
 		return INSTANCE;
 	}
 	private FileDAO() {}
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public void insertFile(FileDTO dto) {
 		try {
@@ -27,13 +26,35 @@ public class FileDAO extends DBHelper {
 			pstmt.setString(3, dto.getsName());
 			pstmt.executeUpdate();
 			closeAll();
-		} catch (Exception e) {
+		}catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
-	public FileDTO selectFile(int fno) {
-		return null;
+	public FileDTO selectFile(String fno) {
+		
+		FileDTO fileDTO = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(SQL.SELECT_FILE_BY_FNO);
+			pstmt.setString(1, fno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				fileDTO = new FileDTO();
+				fileDTO.setFno(rs.getInt(1));
+				fileDTO.setAno(rs.getInt(2));
+				fileDTO.setoName(rs.getString(3));
+				fileDTO.setsName(rs.getString(4));
+				fileDTO.setDownload(rs.getInt(5));
+				fileDTO.setRdate(rs.getString(6));
+			}
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return fileDTO;
 	}
 	
 	public List<FileDTO> selectAllFile() {
@@ -42,6 +63,18 @@ public class FileDAO extends DBHelper {
 	
 	public void updateFile(FileDTO dto) {
 		
+	}
+	
+	public void updateFileDownloadCount(String fno) {
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(SQL.UPDATE_FILE_DOWNLOAD_COUNT);
+			pstmt.setString(1, fno);
+			pstmt.executeUpdate();
+			closeAll();			
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	public void deleteFile(int fno) {

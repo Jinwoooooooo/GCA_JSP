@@ -35,6 +35,17 @@ public class SQL {
 	public static final String LIMIT_FOR_SEARCH = "LIMIT ?, 10";
 	
 	
+	
+	public static final String SELECT_ARTICLE_WITH_FILE = "SELECT "
+															+ "a.*,"
+															+ "f.*,"
+															+ "u.`nick` "
+															+ "FROM `article` AS a "
+															+ "LEFT JOIN `file` AS f ON a.no = f.ano "
+															+ "JOIN `user` AS u ON a.writer = u.uid "
+															+ "WHERE a.`no`=?";
+	
+	
 	public static final String SELECT_MAX_NO = "SELECT MAX(no) FROM article";
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM article";
 	public static final String SELECT_ALL_ARTICLE = "SELECT a.*, u.nick FROM article AS a JOIN user AS u ON a.writer = u.uid ORDER BY a.no desc LIMIT ?, 10";
@@ -50,6 +61,8 @@ public class SQL {
 																	 + "oName = ?,"
 																	 + "sName = ?,"
 																	 + "rdate = NOW()";
+	public final static String SELECT_FILE_BY_FNO = "SELECT * FROM `file` WHERE `fno`=?";
+	public final static String UPDATE_FILE_DOWNLOAD_COUNT = "UPDATE `file` SET `download` = `download` + 1 WHERE `fno`=?";
 			
 																	
 	
