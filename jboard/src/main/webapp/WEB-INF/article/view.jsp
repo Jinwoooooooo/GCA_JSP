@@ -6,6 +6,60 @@
     <meta charset="UTF-8">
     <title>글보기</title>
     <link rel="stylesheet" href="../css/style.css"/>
+    <script>
+    	document.addEventListener("DOMContentLoaded", function() {
+    		console.log("DOMContentLoaded");
+    		
+    		const commentList = document.getElementsByClassName("commentList")[0];
+    		
+    		formComment.onsubmit = function(e) {
+    			e.preventDefault();
+
+    			//입력한 데이터 가져오기
+    			const parent = formComment.parent.value;
+    			const writer = formComment.writer.value;
+    			const content = formComment.content.value;
+    			
+    			//폼 데이터 생성
+    			const formData = new FormData();
+    			formData.append("parent", parent);
+    			formData.append("writer", writer);
+    			formData.append("content", content);
+    			console.log(formData);
+    			
+    			//서버 전송
+    			fetch("/jboard/comment/write.do", {
+    				method: "POST",
+    				body: formData 
+    			})
+   				.then(response => response.json())
+   				.then(data => {
+   					console.log(data);
+   					
+   					//동적 태그 생성
+   					if(data != null) {
+   						alert("댓글이 등록 되었습니다.");
+   						const article = `<article>
+					                        <span class='nick'>\${data.nick}</span>
+					                        <span class='date'>\${data.wdate}</span>
+					                        <p class='content'>\${data.content}</p>                        
+					                        <div>
+					                            <a href='#' class='remove'>삭제</a>
+					                            <a href='#' class='modify'>수정</a>
+					                        </div>
+					                    </article>`;
+					    
+						commentList.insertAdjacentHTML('beforeend', article);
+   					} else {
+   						alert("댓글 등록을 실패했습니다.");
+   					}
+   				})
+   				.catch(err => {
+   					console.log(err);
+   				});
+    		}
+    	});
+    </script>
 </head>
 <body>
     <div id="wrapper">
@@ -68,19 +122,18 @@
 					<c:if test="${empty comments}">
 	                    <p class="empty">등록된 댓글이 없습니다.</p>
 					</c:if>
-
                 </section>
 
                 <!-- 댓글쓰기 -->
                 <section class="commentForm">
                     <h3>댓글쓰기</h3>
-                    <form action="/jboard/comment/write.do" method="post">
+                    <form name="formComment" action="#">
                     	<input type="hidden" name="parent" value="${articleDTO.no}">
                     	<input type="hidden" name="writer" value="${sessUser.uid}">
-                        <textarea name="content" placeholder="댓글 입력"></textarea>
+                        <textarea name="content" placeholder="댓글 입력" required></textarea>
                         <div>
                             <a href="#" class="btn btnCancel">취소</a>
-                            <input type="submit" value="작성완료" class="btn btnComplete"/>
+                            <input type="submit" value="작성완료" class="btn btnComplete" onclick="setTimeout(() => content.value = '', 500)"/>
                         </div>
                     </form>
                 </section>
