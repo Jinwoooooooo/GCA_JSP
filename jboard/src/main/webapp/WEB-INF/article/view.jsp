@@ -53,26 +53,31 @@
                 <!-- 댓글목록 -->
                 <section class="commentList">
                     <h3>댓글목록</h3>                   
-
-                    <article>
-                        <span class="nick">길동이</span>
-                        <span class="date">20-05-20</span>
-                        <p class="content">댓글 샘플 입니다.</p>                        
-                        <div>
-                            <a href="#" class="remove">삭제</a>
-                            <a href="#" class="modify">수정</a>
-                        </div>
-                    </article>
-
-                    <p class="empty">등록된 댓글이 없습니다.</p>
+					<c:forEach var="comment" items="${requestScope.comments}">
+	                    <article>
+	                        <span class="nick">${comment.nick}</span>
+	                        <span class="date">${comment.wdate}</span>
+	                        <p class="content">${comment.content}</p>                        
+	                        <div>
+	                            <a href="#" class="remove">삭제</a>
+	                            <a href="#" class="modify">수정</a>
+	                        </div>
+	                    </article>
+					</c:forEach>
+					
+					<c:if test="${empty comments}">
+	                    <p class="empty">등록된 댓글이 없습니다.</p>
+					</c:if>
 
                 </section>
 
                 <!-- 댓글쓰기 -->
                 <section class="commentForm">
                     <h3>댓글쓰기</h3>
-                    <form action="#">
-                        <textarea name="content">댓글내용 입력</textarea>
+                    <form action="/jboard/comment/write.do" method="post">
+                    	<input type="hidden" name="parent" value="${articleDTO.no}">
+                    	<input type="hidden" name="writer" value="${sessUser.uid}">
+                        <textarea name="content" placeholder="댓글 입력"></textarea>
                         <div>
                             <a href="#" class="btn btnCancel">취소</a>
                             <input type="submit" value="작성완료" class="btn btnComplete"/>

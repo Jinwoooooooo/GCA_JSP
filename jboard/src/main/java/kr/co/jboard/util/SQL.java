@@ -65,6 +65,9 @@ public class SQL {
 	public final static String UPDATE_FILE_DOWNLOAD_COUNT = "UPDATE `file` SET `download` = `download` + 1 WHERE `fno`=?";
 			
 																	
+	//comment
+	public static final String INSERT_COMMENT = "INSERT INTO comment SET parent = ?, content = ?, writer = ?, regip = ?, wdate = NOW()";
+	public static final String SELECT_ALL_COMMENT_BY_PARENT = "SELECT c.*, u.nick FROM comment AS c JOIN user AS u ON c.writer = u.uid WHERE parent = ?;";
 	
 	
 
