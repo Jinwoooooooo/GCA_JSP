@@ -35,3 +35,5 @@ public class User1Service {
 		dao.deleteUser1(uid);
 	}
 }
+
+

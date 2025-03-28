@@ -106,5 +106,6 @@ public class User1DAO extends DBHelper {
 			e.printStackTrace();
 		}
 	}
-	
 }
+
+

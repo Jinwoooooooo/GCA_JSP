@@ -42,3 +42,4 @@ public class User1DTO {
 		return "User1DTO [uid=" + uid + ", name=" + name + ", hp=" + hp + ", age=" + age + "]";
 	}
 }
+

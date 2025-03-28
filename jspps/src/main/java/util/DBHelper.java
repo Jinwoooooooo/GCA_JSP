@@ -28,7 +28,6 @@ public class DBHelper {
 	}
 	
 	protected void closeAll() throws SQLException {
-		
 		if(rs != null) {
 			rs.close();
 		}
@@ -44,9 +43,6 @@ public class DBHelper {
 		if(conn != null) {
 			conn.close();
 		}
-		
 	}
-	
-	
-	
 }
+

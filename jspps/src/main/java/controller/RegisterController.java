@@ -48,3 +48,5 @@ public class RegisterController extends HttpServlet {
 		resp.sendRedirect("/jspps/list.do");
 	}
 }
+
+

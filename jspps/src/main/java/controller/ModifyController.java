@@ -57,3 +57,4 @@ public class ModifyController extends HttpServlet {
 		resp.sendRedirect("/jspps/list.do");
 	}
 }
+

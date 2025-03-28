@@ -8,3 +8,5 @@ public class SQL {
 	public static final String UPDATE_USER1 = "UPDATE user1 SET name=?, hp=?, age=? WHERE uid=?";
 	public static final String DELETE_USER1 = "DELETE FROM user1 WHERE uid=?";
 }
+
+
